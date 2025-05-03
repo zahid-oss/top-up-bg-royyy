@@ -2,160 +2,172 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DIAMOND BG ROYYY</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #e6f0ff;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h1 {
-      text-align: center;
-      color: #004080;
-      margin-bottom: 5px;
-    }
-
-    h2.subjudul {
-      text-align: center;
-      color: #3366cc;
-      font-weight: normal;
-      margin-bottom: 20px;
-    }
-
-    .form-id {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .form-id input {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .paket {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      margin: 20px 0;
-      overflow: hidden;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .paket img {
-      width: 150px;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .paket-info {
-      padding: 20px;
-      flex: 1;
-    }
-
-    .paket-info h3 {
-      margin: 0 0 10px;
+      font-family: Arial, sans-serif;
+      background-color: #e0f0ff;
       color: #003366;
+      margin: 0;
+      padding: 0;
     }
-
-    .paket-info p {
-      margin: 5px 0;
-    }
-
-    .btn-wa {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #25d366;
+    header {
+      background-color: #0077cc;
       color: white;
-      text-decoration: none;
-      border-radius: 5px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
     }
-
-    .btn-wa:hover {
-      background-color: #1ebc59;
+    #adminBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #0077cc;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-weight: bold;
     }
+    .container {
+      padding: 20px;
+    }
+    .diamond-item {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 10px 0;
+    }
+    .diamond-item img {
+      width: 50px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .admin-controls {
+      margin-top: 10px;
+    }
+    input, button, select {
+      margin: 5px 0;
+      padding: 8px;
+      font-size: 14px;
+    }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>DIAMOND BG ROYYY</h1>
-    <h2 class="subjudul">Diamond Free Fire</h2>
+    <p>TOP UP DIAMOND FREE FIRE</p>
+    <button id="adminBtn">Admin</button>
+  </header>
 
-    <div class="form-id">
-      <input type="text" id="playerId" placeholder="Masukkan ID Free Fire kamu..." />
-    </div>
+  <div class="container" id="userView">
+    <div id="diamondList"></div>
+    <input type="text" id="userId" placeholder="Masukkan ID Free Fire Anda" />
+  </div>
 
-    <!-- Paket Diamond -->
-    <div class="paket">
-      <img src="https://cdn-icons-png.flaticon.com/512/1162/1162499.png" alt="70 Diamond" />
-      <div class="paket-info">
-        <h3>70 Diamond</h3>
-        <p>Harga: Rp10.000</p>
-        <a class="btn-wa" onclick="order(70)">Order via WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="paket">
-      <img src="https://cdn-icons-png.flaticon.com/512/1162/1162499.png" alt="140 Diamond" />
-      <div class="paket-info">
-        <h3>140 Diamond</h3>
-        <p>Harga: Rp19.000</p>
-        <a class="btn-wa" onclick="order(140)">Order via WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="paket">
-      <img src="https://cdn-icons-png.flaticon.com/512/1162/1162499.png" alt="355 Diamond" />
-      <div class="paket-info">
-        <h3>355 Diamond</h3>
-        <p>Harga: Rp49.000</p>
-        <a class="btn-wa" onclick="order(355)">Order via WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="paket">
-      <img src="https://cdn-icons-png.flaticon.com/512/1162/1162499.png" alt="720 Diamond" />
-      <div class="paket-info">
-        <h3>720 Diamond</h3>
-        <p>Harga: Rp95.000</p>
-        <a class="btn-wa" onclick="order(720)">Order via WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="paket">
-      <img src="https://cdn-icons-png.flaticon.com/512/1162/1162499.png" alt="1000 Diamond" />
-      <div class="paket-info">
-        <h3>1000 Diamond</h3>
-        <p>Harga: Rp130.000</p>
-        <a class="btn-wa" onclick="order(1000)">Order via WhatsApp</a>
-      </div>
-    </div>
+  <div class="container hidden" id="adminView">
+    <h2>Mode Admin</h2>
+    <div id="adminDiamondList"></div>
+    <input type="text" id="newName" placeholder="Nama Diamond" />
+    <input type="number" id="newPrice" placeholder="Harga" />
+    <button onclick="addDiamond()">Tambah Diamond</button>
+    <br>
+    <button onclick="saveDiamonds()">Simpan</button>
+    <button onclick="exitAdmin()">Kembali ke Mode Pelanggan</button>
   </div>
 
   <script>
-    function order(diamond) {
-      const id = document.getElementById("playerId").value.trim();
-      if (!id) {
-        alert("Silakan masukkan ID Free Fire kamu terlebih dahulu.");
-        return;
-      }
-      const nomor = "6282278960050";
-      const pesan = `Halo admin, saya ingin beli ${diamond} Diamond Free Fire. ID: ${id}`;
-      const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
-      window.open(url, "_blank");
+    let diamonds = JSON.parse(localStorage.getItem('diamonds')) || [
+      { name: '70 Diamond', price: 10000 },
+      { name: '140 Diamond', price: 19000 }
+    ];
+
+    function renderUserView() {
+      const list = document.getElementById('diamondList');
+      list.innerHTML = '';
+      diamonds.forEach((d, i) => {
+        const item = document.createElement('div');
+        item.className = 'diamond-item';
+        item.innerHTML = `
+          <img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" alt="Diamond" />
+          <strong>${d.name}</strong> - Rp${d.price}<br>
+          <button onclick="order(${i})">Pesan</button>
+        `;
+        list.appendChild(item);
+      });
     }
+
+    function renderAdminView() {
+      const list = document.getElementById('adminDiamondList');
+      list.innerHTML = '';
+      diamonds.forEach((d, i) => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <input value="${d.name}" onchange="updateDiamondName(${i}, this.value)" />
+          <input type="number" value="${d.price}" onchange="updateDiamondPrice(${i}, this.value)" />
+          <button onclick="deleteDiamond(${i})">Hapus</button>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function updateDiamondName(i, value) {
+      diamonds[i].name = value;
+    }
+
+    function updateDiamondPrice(i, value) {
+      diamonds[i].price = parseInt(value);
+    }
+
+    function deleteDiamond(i) {
+      diamonds.splice(i, 1);
+      renderAdminView();
+    }
+
+    function addDiamond() {
+      const name = document.getElementById('newName').value;
+      const price = parseInt(document.getElementById('newPrice').value);
+      if (name && price) {
+        diamonds.push({ name, price });
+        renderAdminView();
+        document.getElementById('newName').value = '';
+        document.getElementById('newPrice').value = '';
+      }
+    }
+
+    function saveDiamonds() {
+      localStorage.setItem('diamonds', JSON.stringify(diamonds));
+      alert('Data disimpan!');
+    }
+
+    function exitAdmin() {
+      document.getElementById('adminView').classList.add('hidden');
+      document.getElementById('userView').classList.remove('hidden');
+      renderUserView();
+    }
+
+    function order(index) {
+      const id = document.getElementById('userId').value;
+      if (!id) return alert('Masukkan ID Anda terlebih dahulu!');
+      const msg = `Halo Admin Royyy Saya Ingin membeli Diamond :%0A${diamonds[index].name}%0AID: ${id}`;
+      window.open(`https://wa.me/6282278960050?text=${msg}`);
+    }
+
+    document.getElementById('adminBtn').onclick = () => {
+      const pass = prompt('Masukkan sandi admin:');
+      if (pass === 'zahid201006') {
+        document.getElementById('adminView').classList.remove('hidden');
+        document.getElementById('userView').classList.add('hidden');
+        renderAdminView();
+      } else {
+        alert('Sandi salah!');
+      }
+    };
+
+    renderUserView();
   </script>
 </body>
 </html>
